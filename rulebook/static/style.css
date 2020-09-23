@@ -1,0 +1,197 @@
+@charset "UTF-8";
+
+@media only screen and (min-width: 600px) {
+  img.float-right {
+    float: right;
+    margin-left: 5px;
+  }
+
+  img.float-left {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+@font-face {
+    font-family: 'typographerwoodcutinitialsoRg';
+    src: url('/css/woodcut1-webfont.woff2') format('woff2'),
+         url('/css/woodcut1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  width: 80%;
+  max-width: 21cm;
+  padding: 2cm;
+  margin: 1cm auto;
+  font-family: 'Libre Caslon Text', serif;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+ol {
+  list-style-type: none;
+  counter-reset: item;
+}
+
+ol.roman {
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+ol.roman > li {
+  margin: 0;
+  padding: 0 0 0 2em;
+  text-indent: -2em;
+  list-style-type: none;
+  counter-increment: item;
+}
+
+ol.roman > li:before {
+  display: inline-block;
+  width: 1em;
+  padding-right: 0.5em;
+  font-weight: 800;
+  text-align: right;
+  content: "-";
+}
+
+a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+a:focus {
+  color: inherit;
+}
+
+p {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+p.indent {
+}
+
+p.indent::first-letter {
+  display: block;
+  float: left;
+  line-height: .8;
+  margin-right: 5px;
+  font-size: 60px;
+  font-family: 'typographerwoodcutinitialsoRg';
+  color: rgb(150,0,20);
+}
+
+strong {
+  font-weight: 800;
+}
+
+#summary {
+  position: relative;
+  border: solid 4px black;
+  padding: 15px;
+  margin-bottom: 50px;
+  break-after: page;
+  break-before: page;
+}
+
+#summary:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px solid #000000;
+}
+
+#summary h3 {
+  text-align: center;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+li p {
+  display: inline;
+}
+
+table {
+  width: 100%;
+  position: relative;
+  border: solid 4px black;
+  padding: 5px 20px;
+  border-spacing: 3px 7px;
+}
+
+table:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px solid #000000;
+}
+
+table tr:first-child {
+  font-weight: 800;
+  font-size: 0.9em;
+}
+
+table td.head {
+  font-size: 0.9em;
+  text-align: left;
+  vertical-align: top;
+  width: 100px;
+  min-width: 100px;
+  position: relative;
+  top: -2px;
+}
+
+table td.lead {
+  font-size: 0.8em;
+  text-align: justify;
+  text-justify: inter-word;
+  vertical-align: top;
+}
+
+table th {
+  font-size: 1.2em;
+}
+
+.annex {
+  break-after: page;
+  break-before: page;
+}
+
+#logo {
+  width: 60%;
+}
+
+img {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.illustration {
+  max-height: 400px;
+  max-width: 100%;
+}

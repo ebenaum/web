@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ebenaum Content Manager</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ricmoo/aes-js/e27b99df/index.js"></script>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  <script>
+  var EncryptedPreview = function(component) {
+  
+  return createClass({
+    getInitialState: function() {
+      return { key: null, counter: null };
+    },
+    getUser: function() {
+      const user = window.localStorage.getItem('netlify-cms-user');
+      if (user) {
+        return JSON.parse(user);
+      }
+
+      return {};
+    },
+    fetchKey: function() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://us-central1-phonic-weaver-237610.cloudfunctions.net/ebenaum-store-key');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.send('token=' + this.getUser().token);
+      xhr.onload = function() {
+        const config = JSON.parse(xhr.response);
+
+        this.setState({ key: aesjs.utils.hex.toBytes(config.key), counter: config.counter });
+      }.bind(this);
+    },
+    componentDidMount: function() {
+      this.fetchKey();
+    },
+    render: function() {
+      if (this.state.key === null || this.state.counter === null) {
+        return null;
+      }
+      const props = Object.assign({}, this.props);
+
+      if (props.value) {
+        var encryptedBytes = aesjs.utils.hex.toBytes(this.props.value.trim());
+        var aesCtr = new aesjs.ModeOfOperation.ctr(this.state.key, new aesjs.Counter(this.state.counter));
+        var decryptedBytes = aesCtr.decrypt(encryptedBytes);
+        props.value = aesjs.utils.utf8.fromBytes(decryptedBytes);
+      }
+
+      return h(component, props);
+    }
+    });
+  }
+
+  var EncryptedEntry = function(component) {
+  
+  return createClass({
+    getInitialState: function() {
+      return { key: null, counter: null, value: this.props.value || '', timeout: null };
+    },
+    getUser: function() {
+      const user = window.localStorage.getItem('netlify-cms-user');
+      if (user) {
+        return JSON.parse(user);
+      }
+
+      return {};
+    },
+    handleChange: function(value) {
+      if (this.state.timeout !== null) {
+        clearTimeout(this.state.timeout);
+      }
+
+      const timeout = setTimeout(function() {
+        var textBytes = aesjs.utils.utf8.toBytes(value);
+
+        var aesCtr = new aesjs.ModeOfOperation.ctr(this.state.key, new aesjs.Counter(this.state.counter));
+        var encryptedBytes = aesCtr.encrypt(textBytes);
+        var encryptedHex = aesjs.utils.hex.fromBytes(encryptedBytes);
+        this.props.onChange(encryptedHex);
+      }.bind(this), 600);
+
+      this.setState({ value: value, timeout: timeout });
+    },
+    fetchKey: function() {
+      let xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://us-central1-phonic-weaver-237610.cloudfunctions.net/ebenaum-store-key');
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.send('token=' + this.getUser().token);
+      xhr.onload = function() {
+        const config = JSON.parse(xhr.response);
+
+        const key = aesjs.utils.hex.toBytes(config.key);
+
+        const encryptedBytes = aesjs.utils.hex.toBytes(this.state.value);
+        const aesCtr = new aesjs.ModeOfOperation.ctr(key, new aesjs.Counter(config.counter));
+        const decryptedBytes = aesCtr.decrypt(encryptedBytes);
+        const value = aesjs.utils.utf8.fromBytes(decryptedBytes);
+        this.setState({ key: key, counter: config.counter, value: value });
+      }.bind(this);
+    },
+    componentDidMount: function() {
+      this.fetchKey();
+    },
+    render: function() {
+      if (this.state.key === null || this.state.counter === null) {
+        return null;
+      }
+      const props = Object.assign({}, this.props);
+      props.onChange = this.handleChange.bind(this);
+
+      if (this.state.value) {
+        props.value = this.state.value;
+      }
+
+      return h(component, props);
+    }
+    });
+  }
+  CMS.registerWidget('encrypted-text', EncryptedEntry(CMS.getWidget('text').control), EncryptedPreview(CMS.getWidget('text').preview));
+  CMS.registerWidget('encrypted-string', EncryptedEntry(CMS.getWidget('string').control), EncryptedPreview(CMS.getWidget('string').preview));
+  CMS.registerWidget('encrypted-markdown', EncryptedEntry(CMS.getWidget('markdown').control), EncryptedPreview(CMS.getWidget('markdown').preview));
+  </script>
+  <!-------------------------------------------------------->
+  <script>
+  var PostPreview = createClass({
+  getInitialState: function() {
+    return { content: '', timeout: null };
+  },
+  getUser: function() {
+    const user = window.localStorage.getItem('netlify-cms-user');
+    if (user) {
+      return JSON.parse(user);
+    }
+
+    return {};
+  },
+  loadPreview: function() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://us-central1-phonic-weaver-237610.cloudfunctions.net/ebenaum-rules-lexer');
+    xhr.send(this.props.entry.getIn(['data', 'body']));
+    xhr.onload = function() {
+      this.setState({ content: xhr.response, timeout: null });
+    }.bind(this);
+  },
+  componentDidUpdate: function(prevProps) {
+    if (this.props.entry === prevProps.entry) {
+      return;
+    }
+
+    if (this.state.timeout !== null) {
+      clearTimeout(this.state.timeout);
+    }
+
+    let timeout = setTimeout(function() {
+      this.loadPreview();
+    }.bind(this), 1000);
+
+    this.setState({ timeout: timeout });
+  },
+  componentDidMount: function() {
+    this.loadPreview();
+  },
+  render: function() {
+    return h('div', { dangerouslySetInnerHTML: {__html: this.state.content} });
+  }
+  });
+
+  CMS.registerPreviewTemplate("regles", PostPreview);
+  </script>
+</body>
+</html>
