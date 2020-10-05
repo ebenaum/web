@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: jloup/ebenaum-public
+  repo: ebenaum/cosmos
 
 media_folder: uploads
 publish_mode: editorial_workflow

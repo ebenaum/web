@@ -1,6 +1,6 @@
 BUILD_DIR ?= build
 
-BUILD_FILES = $(addprefix $(BUILD_DIR)/, index.html)
+BUILD_FILES = $(addprefix $(BUILD_DIR)/, index.html landing.css erenthyrm-2021.html)
 
 static: $(BUILD_DIR) $(BUILD_FILES)
 
