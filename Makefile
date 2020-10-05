@@ -8,7 +8,7 @@ BUILD_IMAGES=$(foreach file,$(notdir $(SRC_IMAGES)),$(BUILD_PUBLIC_IMG_DIR)/$(fi
 
 .PHONY: dev static clean
 
-SUBPROJECTS = base@. landing@. admin@pc-orga rulebook@.
+SUBPROJECTS = base@. landing@. admin@pc-orga rulebook@. data@data
 ifdef SUBPROJECT
 BUILD_SUBPROJECTS = $(filter $(SUBPROJECT)@%,$(SUBPROJECTS))
 else
