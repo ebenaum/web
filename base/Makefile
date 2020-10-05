@@ -4,7 +4,10 @@ BUILD_FILES = $(addprefix $(BUILD_DIR)/, _redirects favicon.ico css/woodcut1-web
 
 static: $(BUILD_DIR) $(BUILD_DIR)/css $(BUILD_FILES)
 
-$(BUILD_DIR)/%:
+$(BUILD_DIR):
+	mkdir $@
+
+$(BUILD_DIR)/css:
 	mkdir $@
 
 $(BUILD_DIR)/%: %
