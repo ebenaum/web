@@ -8,7 +8,7 @@ ifndef COSMOS_DIR
 endif
 
 $(BUILD_DIR)/regles.html: $(COSMOS_DIR) rulebook
-	cat $(COSMOS_DIR)/documents/regles.md | ./rulebook > $@
+	cat $(COSMOS_DIR)/content/documents/regles.md | ./rulebook > $@
 
 rulebook: main-packr.go
 	go build -o rulebook .
