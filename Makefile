@@ -8,7 +8,7 @@ BUILD_IMAGES=$(foreach file,$(notdir $(SRC_IMAGES)),$(BUILD_PUBLIC_IMG_DIR)/$(fi
 
 .PHONY: dev static clean
 
-SUBPROJECTS = base@. landing@. admin@pc-orga rulebook@. data@data
+SUBPROJECTS = data@data base@. landing@. admin@pc-orga rulebook@.
 ifdef SUBPROJECT
 BUILD_SUBPROJECTS = $(filter $(SUBPROJECT)@%,$(SUBPROJECTS))
 else
@@ -17,9 +17,9 @@ endif
 
 static: $(BUILD_SUBPROJECTS) $(BUILD_IMAGES)
 
-$(BUILD_SUBPROJECTS): $(BUILD_PUBLIC_DIR) $(BUILD_COSMOS_DIR)
+$(BUILD_SUBPROJECTS): $(BUILD_PUBLIC_DIR) $(BUILD_COSMOS_DIR) scrib
 	$(info build subproject '$(firstword $(subst @, ,$@))' -> $(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)))
-	@make -C $(firstword $(subst @, ,$@)) static BUILD_DIR=$(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)) COSMOS_DIR=$(BUILD_COSMOS_DIR)
+	@make -C $(firstword $(subst @, ,$@)) static BUILD_DIR=$(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)) COSMOS_DIR=$(BUILD_COSMOS_DIR) SCRIB=$(PWD)/scrib DATA_DIR=$(BUILD_PUBLIC_DIR)/data
 
 dev: $(BUILD_SUBPROJECTS) $(BUILD_IMAGES)
 ifndef SUBPROJECT
@@ -45,6 +45,9 @@ $(BUILD_PUBLIC_DIR):
 
 $(BUILD_PUBLIC_IMG_DIR):
 	mkdir -p $@
+
+scrib: templater/main.go
+	go build -o scrib ./templater
 
 clean:
 	rm -rf build

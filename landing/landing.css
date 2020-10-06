@@ -52,3 +52,15 @@ p {
   font-size: 1.3em;
   margin-bottom: 15px;
 }
+
+.section {
+  margin-bottom: 30px;
+}
+
+.article {
+  text-align: center;
+}
+
+.article-content {
+  text-align: justify;
+}

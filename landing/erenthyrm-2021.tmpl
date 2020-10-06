@@ -1,0 +1,45 @@
+<!-- __tmpl__:journal-erenthyrm -->
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Ebenaum</title>
+  <meta name="description" content="Ebenaum">
+  <meta name="author" content="jloup">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="landing.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/247c19fd5c.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="spacer-m"></div>
+  <p><img src="/img/donjon.png" width="150px" /></p>
+  <div class="spacer-s"></div>
+  <h1>Ebenaum</h1>
+  <div class="spacer-s"></div>
+  <div class='section'>
+    <h2>Erenthyrm 2021</h2>
+    <div class="spacer-s"></div>
+    <div style="text-align: center;">
+      <ul class="table-of-contents">
+        <li><i class="fas fa-book"></i> Livre des règles</li>
+        <li><i class="fab fa-discord"></i> Forum</li>
+        <li><i class="fas fa-chess-rook"></i> Le Lieu</li>
+        <li><i class="fas fa-hat-wizard"></i> Créer son personnage</li>
+      </ul>
+    </div>
+  </div>
+  <div class='section'>
+    <h2>Journal</h2>
+    {{range .}}
+    <div class='article'>
+      <h4>{{ .title }}</h4>
+      <p class='article-content'>{{ .body }}</p>
+    </div>
+    {{end}}
+  </div>
+</body>
+</html>
