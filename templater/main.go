@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"io"
 	"os"
+	"time"
 )
 
 func main() {
@@ -20,8 +21,20 @@ func main() {
 	}
 }
 
+var fns template.FuncMap = template.FuncMap{
+	"formatDate": func(d string) (string, error) {
+		months := []string{"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"}
+		date, err := time.Parse(time.RFC3339, d)
+		if err != nil {
+			return "", err
+		}
+
+		return fmt.Sprintf("Le %d %s %d à %d heures", date.Day(), months[date.Month()-1], date.Year(), date.Hour()), nil
+	},
+}
+
 func a(templatePath string, dataPath string, output io.Writer) error {
-	tmpl, err := template.ParseFiles(templatePath)
+	tmpl, err := template.New(templatePath).Funcs(fns).ParseFiles(templatePath)
 	if err != nil {
 		return err
 	}
