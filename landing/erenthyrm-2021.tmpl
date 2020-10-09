@@ -28,12 +28,14 @@
 <div class="container">
   <div class="row section-title"><h2>Erenthyrm 2021</h2></div>
   <div class="row">
-    <ul class="table-of-contents">
-      <li><i class="fas fa-book"></i> <a href="regles">Livre des règles</a></li>
-      <li><i class="fab fa-discord"></i> <a href='https://discord.gg/va7CBwt' target="_blank">Taverne</a></li>
-      <li class="soon-content"><i class="fas fa-chess-rook"></i> Le Lieu<span class='soon-badge'><span>Bientôt</span></span></li>
-      <li class="soon-content"><i class="fas fa-hat-wizard"></i> Créer son personnage<span class='soon-badge'><span>Bientôt</span></span></li>
-    </ul>
+    <div class='col-8'>
+      <ul class="table-of-contents">
+        <li><i class="fas fa-book"></i> <a href="regles">Livre des règles</a></li>
+        <li><i class="fab fa-discord"></i> <a href='https://discord.gg/va7CBwt' target="_blank">Taverne</a></li>
+        <li class="soon-content"><i class="fas fa-chess-rook"></i> Le Lieu<span class='soon-badge'><span>Bientôt</span></span></li>
+        <li class="soon-content"><i class="fas fa-hat-wizard"></i> Créer son personnage<span class='soon-badge'><span>Bientôt</span></span></li>
+      </ul>
+    </div>
   </div>
 </div>
 <div class='mb-5'></div>
@@ -43,8 +45,8 @@
   <div class='article'>
     <div class="row"><h3>{{ .title }}</h3></div>
     <div class='mb-3'></div>
-    <div class="row"><div class='col-md-6 date'><p>{{ formatDate .date }}</p></div></div>
-    <div class="row"><div class='col-md-6 text-justify'><p>{{ .body }}</p></div></div>
+    <div class="row"><div class='col-10 col-md-6 date'><p>{{ formatDate .date }}</p></div></div>
+    <div class="row"><div class='col-10 col-md-6 text-justify'><p>{{ .body }}</p></div></div>
   </div>
   {{end}}
 </div>
