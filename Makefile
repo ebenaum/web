@@ -17,7 +17,7 @@ endif
 
 static: $(BUILD_SUBPROJECTS) $(BUILD_IMAGES)
 
-$(BUILD_SUBPROJECTS): $(BUILD_PUBLIC_DIR) $(BUILD_COSMOS_DIR) scrib
+$(BUILD_SUBPROJECTS): $(BUILD_PUBLIC_DIR) fetch-cosmos $(BUILD_COSMOS_DIR) scrib
 	$(info build subproject '$(firstword $(subst @, ,$@))' -> $(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)))
 	@make -C $(firstword $(subst @, ,$@)) static BUILD_DIR=$(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)) COSMOS_DIR=$(BUILD_COSMOS_DIR) SCRIB=$(PWD)/scrib DATA_DIR=$(BUILD_PUBLIC_DIR)/data
 
@@ -28,10 +28,14 @@ else
 	http-server -p 8080 $(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$<))
 endif
 
-$(BUILD_COSMOS_DIR):
+.PHONY: fetch-cosmos
+
+fetch-cosmos:
 ifeq ($(INCOMING_HOOK_BODY),update-type=content)
 	wget -O $(BUILD_DIR)/master.zip https://github.com/ebenaum/cosmos/archive/master.zip
-	unzip -a $(BUILD_DIR)/master.zip -d $@
+	unzip -a $(BUILD_DIR)/master.zip 'cosmos-master/*' -d cosmos
+	cp -R cosmos/cosmos-master/* cosmos/
+	rm -rf cosmos/cosmos-master
 endif
 
 $(BUILD_PUBLIC_IMG_DIR)/%: $(BUILD_COSMOS_DIR)/uploads/% $(BUILD_PUBLIC_IMG_DIR)
