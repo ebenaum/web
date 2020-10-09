@@ -13,7 +13,7 @@ $(BUILD_DIR)/regles.html: $(COSMOS_DIR) rulebook
 rulebook: main-packr.go
 	go build -o rulebook .
 
-main-packr.go: static/template.html static/style.css
+main-packr.go: template.html style.css
 	packr2
 
 $(BUILD_DIR):
