@@ -6,6 +6,7 @@ import (
 	"html/template"
 	"io"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -30,6 +31,24 @@ var fns template.FuncMap = template.FuncMap{
 		}
 
 		return fmt.Sprintf("Le %d %s %d à %d heures", date.Day(), months[date.Month()-1], date.Year(), date.Hour()), nil
+	},
+	"findEntry": func(entries []interface{}, name string) (map[string]interface{}, error) {
+		for _, entryRaw := range entries {
+			entry, ok := entryRaw.(map[string]interface{})
+			if !ok {
+				return nil, fmt.Errorf("wrong entry type '%v'", entryRaw)
+			}
+
+			if title, ok := entry["title"].(string); ok && title == name {
+				return entry, nil
+			}
+		}
+
+		return nil, fmt.Errorf("no entry '%s'", name)
+	},
+	"splitParagraphes": func(in string) []string {
+		ps := strings.Split(in, "\n")
+		return ps
 	},
 }
 
