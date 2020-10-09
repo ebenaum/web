@@ -32,6 +32,7 @@ endif
 
 fetch-cosmos:
 ifeq ($(INCOMING_HOOK_BODY),update-type=content)
+	rm -rf cosmos/*
 	wget -O $(BUILD_DIR)/master.zip https://github.com/ebenaum/cosmos/archive/master.zip
 	unzip -a $(BUILD_DIR)/master.zip 'cosmos-master/*' -d cosmos
 	cp -R cosmos/cosmos-master/* cosmos/
