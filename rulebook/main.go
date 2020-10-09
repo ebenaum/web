@@ -19,7 +19,7 @@ func main() {
 }
 
 func Build(input io.Reader, w io.Writer, config rulebookMonk.BuilderConfig) error {
-	box := packr.NewBox("./static")
+	box := packr.NewBox("./")
 
 	templateString, err := box.FindString("template.html")
 	if err != nil {

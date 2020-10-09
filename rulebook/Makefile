@@ -10,10 +10,10 @@ endif
 $(BUILD_DIR)/regles.html: $(COSMOS_DIR) rulebook
 	cat $(COSMOS_DIR)/content/documents/regles.md | ./rulebook > $@
 
-rulebook: main-packr.go
+rulebook:
 	go build -o rulebook .
 
-main-packr.go: template.html style.css
+packr: template.html style.css
 	packr2
 
 $(BUILD_DIR):
