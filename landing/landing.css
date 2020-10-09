@@ -1,66 +1,77 @@
 body {
-  background: hsl(0deg 0% 53% / 10%);
-  background-image: radial-gradient(hsl(0deg 0% 0% / 12%) 5%, transparent 0);
+  background: hsl(0deg 0% 53% / 8%);
+  background-image: radial-gradient(hsl(0deg 0% 0% / 5%) 5%, transparent 0);
   background-size: 7px 7px;
 
-  align-content: center;
   font-family: 'Libre Caslon Text', serif;
-  margin: 0 auto;
 }
 
 body * {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-h1 {
-  text-align: center;
+  justify-content: center!important;
 }
 
 h2 {
-  text-align: center;
-  font-style: italic;
+  font-size: 1.7rem;
 }
 
-ul {
-  text-align: center;
-  padding: 0;
+h3 {
+  font-size: 1.3rem;
 }
 
 li {
   list-style: none;
 }
 
-p {
-  text-align: center;
+a {
+  color: black;
 }
 
-.spacer-m {
-  margin-bottom: 5em;
-}
-
-.spacer-s {
-  margin-bottom: 2em;
+a:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .table-of-contents {
-  display: inline-block;
-  text-align:left;
+  font-size: 1.2rem;
 }
 
 .table-of-contents li {
-  font-size: 1.3em;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
-.section {
-  margin-bottom: 30px;
+.table-of-contents a {
+  color: black;
+  text-decoration: underline;
+}
+
+.section-title {
+  font-style: italic;
+  margin-bottom: 20px;
 }
 
 .article {
-  text-align: center;
+  margin-bottom: 20px;
 }
 
-.article-content {
-  text-align: justify;
+.article .date {
+  font-style: italic;
+  justify-content: left!important;
+}
+
+.soon-content {
+  color: #bbbbbb; 
+}
+
+.soon-badge {
+  position: relative;
+}
+
+.soon-badge span {
+  position: absolute;
+  right: -58px;
+  top: -12px;
+  font-size: 0.8rem;
+  background-color: black;
+  color: white;
+  padding: 2px 4px;
 }
