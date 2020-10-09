@@ -75,3 +75,26 @@ a:hover {
   color: white;
   padding: 2px 4px;
 }
+
+
+@font-face {
+    font-family: 'typographerwoodcutinitialsoRg';
+    src: url('/css/woodcut1-webfont.woff2') format('woff2'),
+         url('/css/woodcut1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.first-letter p:first-child::first-letter {
+  display: block;
+  float: left;
+  line-height: .8;
+  margin-right: 5px;
+  font-size: 60px;
+  font-family: 'typographerwoodcutinitialsoRg';
+  /*color: rgb(150,0,20);*/
+}
+
+.first-letter p:first-child {
+  margin-bottom: 35px;
+}

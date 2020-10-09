@@ -27,7 +27,7 @@
 <div class="container">
   <div class='article'>
    
-  <div class='row'><div class='col-6 text-justify'>
+  <div class='row'><div class='col-6 text-justify first-letter'>
   {{ with findEntry . "Manifeste" }}
   {{ range splitParagraphes .body }}
     <p>{{.}}</p>
@@ -40,7 +40,7 @@
 <div class='mb-5'></div>
 <div class="container">
   <div class="row">
-    <ul class="table-of-contents">
+    <ul class="table-of-contents" style="padding-inline-start: 0px;">
       <li><a href="erenthyrm-2021">Erenthyrm 2021</a></li>
     </ul>
   </div>
