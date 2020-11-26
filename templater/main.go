@@ -8,6 +8,10 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/gomarkdown/markdown"
+	"github.com/gomarkdown/markdown/html"
+	"github.com/gomarkdown/markdown/parser"
 )
 
 func main() {
@@ -46,9 +50,22 @@ var fns template.FuncMap = template.FuncMap{
 
 		return nil, fmt.Errorf("no entry '%s'", name)
 	},
-	"splitParagraphes": func(in string) []string {
-		ps := strings.Split(in, "\n")
-		return ps
+	"splitParagraphes": func(in string) []template.HTML {
+		extensions := parser.CommonExtensions
+		p := parser.NewWithExtensions(extensions)
+
+		htmlFlags := html.CommonFlags | html.HrefTargetBlank
+		opts := html.RendererOptions{Flags: htmlFlags}
+		renderer := html.NewRenderer(opts)
+
+		htmlInt := markdown.ToHTML([]byte(in), p, renderer)
+
+		ps := strings.Split(string(htmlInt), "\n")
+		output := make([]template.HTML, len(ps))
+		for i, el := range ps {
+			output[i] = template.HTML(el)
+		}
+		return output
 	},
 }
 
