@@ -15,11 +15,11 @@ import (
 )
 
 func main() {
-	if len(os.Args) != 3 {
+	if len(os.Args) < 3 {
 		fmt.Printf("templater <template> <data.json>\n")
 		os.Exit(1)
 	}
-	err := a(os.Args[1], os.Args[2], os.Stdout)
+	err := a(os.Args[1], os.Args[2], os.Stdout, os.Args[2:])
 	if err != nil {
 		fmt.Println(err)
 		os.Exit(1)
@@ -69,8 +69,13 @@ var fns template.FuncMap = template.FuncMap{
 	},
 }
 
-func a(templatePath string, dataPath string, output io.Writer) error {
+func a(templatePath string, dataPath string, output io.Writer, templates []string) error {
 	tmpl, err := template.New(templatePath).Funcs(fns).ParseFiles(templatePath)
+	if err != nil {
+		return err
+	}
+
+	tmpl, err = tmpl.ParseFiles(templates...)
 	if err != nil {
 		return err
 	}

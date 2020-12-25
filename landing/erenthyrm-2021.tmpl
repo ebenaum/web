@@ -17,14 +17,7 @@
 </head>
 
 <body>
-<div class="container">
-  <a href='/'>
-  <div class="row"><img src="/img/ebenaum-logo-or.png" height="250px"/></div>
-  <div class='mb-2'></div>
-  <div class="row"><h1>Ebenaum</h1></div>
-  </a>
-</div>
-<div class='mb-5'></div>
+{{template "logo.tmpl"}}
 <div class="container">
   <div class="row section-title"><h2>Erenthyrm 2021</h2></div>
   <div class="row">
@@ -52,5 +45,7 @@
   </div>
   {{end}}
 </div>
+<div class='mb-5'></div>
+{{template "footer.tmpl"}}
 </body>
 </html>
