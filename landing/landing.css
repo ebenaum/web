@@ -64,6 +64,12 @@ a:hover {
 
 .section-title {
   font-style: normal;
+  font-family: 'IM Fell';
+  text-align: center;
+}
+
+.section-subtitle {
+  font-style: italic;
   margin-bottom: 20px;
   font-family: 'IM Fell';
 }
@@ -143,4 +149,8 @@ a:hover {
 
 .footer .section {
   margin-bottom: 15px;
+}
+
+.gallery .gallery-tile {
+  margin-bottom: 58px;
 }
