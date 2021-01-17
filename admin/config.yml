@@ -11,8 +11,10 @@ collections:
     extension: 'json'
     folder: 'content/website'
     create: true
-    slug: '{{slug}}'
+    slug: '{{id}}'
+    summary: "{{title}} - {{body}}"
     fields:
+      - {label: "Id", name: "id", widget: "string"}
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "Contenu", name: "body", widget: "markdown"}
   - name: 'world'
