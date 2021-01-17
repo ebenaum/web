@@ -43,7 +43,7 @@ var fns template.FuncMap = template.FuncMap{
 				return nil, fmt.Errorf("wrong entry type '%v'", entryRaw)
 			}
 
-			if title, ok := entry["title"].(string); ok && title == name {
+			if id, ok := entry["id"].(string); ok && id == name {
 				return entry, nil
 			}
 		}
