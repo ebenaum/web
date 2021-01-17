@@ -12,7 +12,7 @@ collections:
     folder: 'content/website'
     create: true
     slug: '{{id}}'
-    summary: "{{title}} - {{body}}"
+    summary: "{{title}}"
     fields:
       - {label: "Id", name: "id", widget: "string"}
       - {label: "Titre", name: "title", widget: "string"}
