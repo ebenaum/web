@@ -22,8 +22,10 @@ collections:
     extension: 'json'
     folder: 'content/faq'
     create: true
+    summary: '{{position}} - {{title}}'
     fields:
       - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Position", name: "position", widget: "number", setp: 1, value_type: 'int'}
       - {label: "TLDR", name: "tldr", widget: "string"}
       - {label: "Contenu", name: "body", widget: "markdown"}
   - name: 'world'
