@@ -17,6 +17,15 @@ collections:
       - {label: "Id", name: "id", widget: "string"}
       - {label: "Titre", name: "title", widget: "string"}
       - {label: "Contenu", name: "body", widget: "markdown"}
+  - name: 'faq'
+    label: 'FAQ'
+    extension: 'json'
+    folder: 'content/faq'
+    create: true
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "TLDR", name: "tldr", widget: "string"}
+      - {label: "Contenu", name: "body", widget: "markdown"}
   - name: 'world'
     label: 'World'
     extension: 'json'
