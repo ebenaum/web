@@ -1,6 +1,6 @@
 BUILD_DIR ?= build
 
-BUILD_FILES = $(addprefix $(BUILD_DIR)/, index.html landing.css erenthyrm-2021.html precedents-gns.html inscription.html)
+BUILD_FILES = $(addprefix $(BUILD_DIR)/, index.html landing.css erenthyrm-2021.html precedents-gns.html inscription.html faq.html)
 
 TMPL_DEP = logo.tmpl footer.tmpl
 

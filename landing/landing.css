@@ -160,3 +160,34 @@ a:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+.faq .article .question {
+  font-style: normal;
+  font-weight: bold;
+  font-family: 'IM Fell';
+  text-align: left;
+}
+
+.faq .article .tldr {
+  font-style: italic;
+  font-weight: bold;
+  text-align: left;
+}
+
+.faq-toc {
+  font-size: 1rem;
+  padding: 0;
+}
+
+.faq-toc li {
+  margin-bottom: 10px;
+}
+
+.faq-toc a {
+  color: black;
+  text-decoration: underline;
+}
+
+.faq li {
+  list-style-type: circle;
+}

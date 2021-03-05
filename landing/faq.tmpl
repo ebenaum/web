@@ -1,0 +1,48 @@
+<!-- __tmpl__:faq -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Ebenaum - FAQ</title>
+  <meta name="description" content="Foire Aux Questions">
+  <meta name="author" content="jloup">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/247c19fd5c.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="landing.css" rel="stylesheet">
+
+</head>
+
+<body>
+{{template "logo.tmpl"}}
+<div class='mb-5'></div>
+<div class="container faq">
+  <div class="row section-title"><h1>Foire Aux Questions</h1></div>
+  <div class='mb-5'></div>
+  <div class="row">
+    <div class='col-10'>
+      <ul class="faq-toc">
+      {{range .}}
+        <li><a href='#{{ .title }}'>{{ .title }}</a></li>
+      {{ end }}
+      </ul>
+    </div>
+  </div>
+  <div class='mb-4'></div>
+  {{range .}}
+  <div class='article'>
+    <div class="row question"><div class='col-10' ><a id="{{ .title }}"></a><h2>{{ .title }}</h3></div></div>
+    <div class='mb-3'></div>
+    <div class="row tldr"><div class='col-10'><p>{{ .tldr }}</p></div></div>
+    {{ range splitParagraphes .body }}
+    <div class="row response"><div class='col-10 text-justify'><p>{{ . }}</p></div></div>
+    {{ end }}
+  </div>
+  {{end}}
+</div>
+<div class='mb-5'></div>
+{{template "footer.tmpl"}}
+</body>
+</html>
