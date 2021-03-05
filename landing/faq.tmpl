@@ -35,7 +35,9 @@
   <div class='article'>
     <div class="row question"><div class='col-10' ><a id="{{ .title }}"></a><h2>{{ .title }}</h3></div></div>
     <div class='mb-3'></div>
-    <div class="row tldr"><div class='col-10'><p>{{ .tldr }}</p></div></div>
+    {{ with .tldr}}
+    <div class="row tldr"><div class='col-10'><p>{{ . }}</p></div></div>
+    {{ end }}
     {{ range splitParagraphes .body }}
     <div class="row response"><div class='col-10 text-justify'><p>{{ . }}</p></div></div>
     {{ end }}
