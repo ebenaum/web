@@ -12,7 +12,7 @@ $(BUILD_DIR)/world.json: $(COSMOS_DIR)/content/world/*.json
 	jq -s 'map( { (.ref|tostring|ascii_downcase|gsub(" "; "-")): { ref: .ref, type: .type, name: .name, description: .description } } ) | add' $(COSMOS_DIR)/content/world/*.json > $@
 
 $(BUILD_DIR)/faq.json: $(COSMOS_DIR)/content/faq/*.json
-	jq -s 'map({ title: .title, tldr: .tldr, body: .body, position: .position, slug: (.title|tostring|ascii_downcase|gsub("[· '\'',’]"; "-")) }) | sort_by(.position)' $(COSMOS_DIR)/content/faq/*.json > $@
+	jq -s 'map({ title: .title, tldr: .tldr, body: .body, position: .position, slug: (.title|tostring|ascii_downcase|gsub("[· '\''’]"; "-"))|gsub("[?,]"; "")|gsub("-$$";"")|gsub("--";"-") }) | sort_by(.position)' $(COSMOS_DIR)/content/faq/*.json > $@
 
 $(BUILD_DIR):
 	mkdir $@
