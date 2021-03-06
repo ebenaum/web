@@ -25,7 +25,7 @@
     <div class='col-10'>
       <ul class="faq-toc">
       {{range .}}
-        <li><a href='#{{ .title }}'>{{ .title }}</a></li>
+        <li><a href='#{{ .slug }}'>{{ .title }}</a></li>
       {{ end }}
       </ul>
     </div>
@@ -33,7 +33,7 @@
   <div class='mb-4'></div>
   {{range .}}
   <div class='article'>
-    <div class="row question"><div class='col-10' ><a id="{{ .title }}"></a><h2>{{ .title }}</h3></div></div>
+    <div class="row question"><div class='col-10' ><a id="{{ .slug }}"></a><h2>{{ .title }}</h3></div></div>
     <div class='mb-3'></div>
     {{ with .tldr}}
     <div class="row tldr"><div class='col-10'><p>{{ . }}</p></div></div>
