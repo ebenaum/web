@@ -18,7 +18,6 @@ endif
 static: $(BUILD_SUBPROJECTS) $(BUILD_IMAGES)
 
 $(BUILD_SUBPROJECTS): $(BUILD_PUBLIC_DIR) fetch-cosmos $(BUILD_COSMOS_DIR) scrib
-	@make --version
 	$(info build subproject '$(firstword $(subst @, ,$@))' -> $(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)))
 	@make -C $(firstword $(subst @, ,$@)) static BUILD_DIR=$(BUILD_PUBLIC_DIR)/$(lastword $(subst @, ,$@)) COSMOS_DIR=$(BUILD_COSMOS_DIR) SCRIB=$(PWD)/scrib DATA_DIR=$(BUILD_PUBLIC_DIR)/data
 
