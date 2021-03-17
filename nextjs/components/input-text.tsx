@@ -29,8 +29,8 @@ export class InputTextConfig extends FormBuilderBaseConfig {
     />;
   }
 
-  value = () :string => {
-    return this._value.text;
+  value = () :InputTextValue => {
+    return this._value;
   }
 }
 

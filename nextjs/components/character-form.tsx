@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Traits } from './input-traits';
 import { FormBuilder } from './form-builder';
 import { BuildInputSelectValue, InputSelectValue, InputSelectConfig, WorldObjectsToChoices } from './input-select';
+import { InputTextValue, InputTextConfig } from './input-text';
 import { FormBuilderElement } from './form-builder-base-config';
 import { InputTraitsValue } from './input-traits';
 
@@ -16,6 +17,7 @@ interface CharacterFormProps {
 
 interface CharacterFormState {
   index: number;
+  name: InputTextValue;
   traits: InputTraitsValue;
   race: InputSelectValue;
   faction: InputSelectValue;
@@ -57,6 +59,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
     this.state = {
       index: 0,
       traits: new InputTraitsValue(emptyTraits(), this.props.traitsPoints),
+      name: new InputTextValue(""), 
       race: BuildInputSelectValue([], WorldObjectsToChoices(props.races)),
       faction: BuildInputSelectValue([], WorldObjectsToChoices(props.factions)),
       classe: BuildInputSelectValue([], WorldObjectsToChoices(props.characterClasses)),
@@ -91,14 +94,16 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       race: this.state.race.getValue(),
       faction: this.state.faction.getValue(),
       classe: this.state.classe.getValue(),
+      name: this.state.name.text,
     };
   }
 
   buildForm = () :FormBuilderElement[] => {
     return [
-      new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), {alignment: 'horizontal', multi: false}),
-      new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.props.races), {alignment: 'vertical', multi: false}),
-      new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), {alignment: 'vertical', multi: false}),
+      new InputTextConfig('name', 'TON NOM ?', this.state.name),
+      new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
+      new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.props.races), { alignment: 'vertical', multi: false }),
+      new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: false }),
     ]; 
   }
 
