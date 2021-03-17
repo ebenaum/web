@@ -8,6 +8,7 @@ static: $(BUILD_DIR) $(BUILD_FILES)
 
 $(BUILD_DIR)/%.html: pages/%.tsx $(wildcard components/*.tsx components/*.ts)
 	npm run build
+	cp -R out/* $(BUILD_DIR)
 
 $(BUILD_DIR):
 	mkdir $@
