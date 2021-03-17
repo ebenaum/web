@@ -1,0 +1,332 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'IM Fell';
+  src: url('/fonts/IM_FELL_English_Roman.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/IM_FELL_English_Roman.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/IMFellEnglish-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IM Fell';
+  src: url('/fonts/IM_FELL_English_Italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/IM_FELL_English_Italic.woff') format('woff'), /* Modern Browsers */
+       url('/fonts/IMFellEnglish-Italic.ttf')  format('truetype'); /* Safari, Android, iOS */
+  font-weight: normal;
+  font-style: italic;
+}
+
+@media screen and (max-width: 800px) {
+  .ability-branch.full {
+    display: block;
+  }
+
+  .ability-branch.full .level {
+    display: inline-block;
+  }
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  font-family: 'IM Fell', serif;
+  font-weight: 400;
+  font-size: 1.2em;
+}
+
+#root {
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+}
+
+a:focus {
+  color: inherit;
+}
+
+.navbar-nav {
+  margin-left: 200px;
+  font-weight: 700;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+input[type=text], textarea {
+  border: none;
+  box-shadow: none !important;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  outline: none;
+  border-bottom: solid 2px black;
+  padding: 5px;
+  font-family: 'IM Fell', serif;
+  font-weight: 400;
+  font-size: 1.2em;
+  resize: none;
+}
+
+.q-response-text {
+}
+
+input.q-response-text {
+  margin-bottom: 10px;
+}
+
+.q-text {
+  position: relative;
+  right: 11px;
+}
+
+.q-select {
+  display: table;
+  margin-bottom: 10px;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+
+.q-select ul {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.q-response-select {
+  padding: 0;
+}
+
+.q-response-select > :last-child {
+  margin-bottom: 0;
+}
+
+.q-response-select .input-select-choice {
+  position: relative;
+  border: solid 4px black;
+  padding: 10px 0px 10px 10px;
+  margin-bottom: 10px;
+  text-align: left;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 50px;
+}
+
+.q-response-select .input-select-choice.horizontal {
+  max-width: 400px;
+  vertical-align: top;
+  margin-right: 15px;
+  display: inline-block;
+}
+
+.q-response-select .input-select-choice.vertical {
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 500px;
+}
+
+.q-response-select .input-select-choice:before {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px solid #000000;
+}
+
+.q-response-select .input-select-choice .description {
+  padding-left: 10px;
+  font-size: 0.9em;
+  margin-top: 5px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.description.hidden {
+  display: none;
+}
+
+.q-response-select .input-select-choice.disabled {
+  opacity: 0.3;
+}
+
+.q-response-select .input-select-choice.active {
+  cursor: pointer;
+}
+
+.q-response-select .input-select-choice.active:hover {
+  border: solid 4px black;
+  background-color: black;
+  color: white;
+}
+
+.q-response-select .selected {
+  border: solid 4px black;
+  background-color: black;
+  color: white;
+}
+
+.q-response-select .selected:hover {
+  border: solid 4px black;
+  background-color: black;
+  color: white;
+}
+
+.q-response-select .checkmark {
+  position: absolute;
+  top: 18px;
+  right: 10px;
+  fill: white;
+}
+
+.form-block {
+  opacity: 0.4;
+  margin-bottom: 150px;
+}
+
+.block.active {
+  opacity: 1;
+}
+
+.block button {
+  display: block;
+}
+
+.block .element {
+  display: inline-block;
+}
+
+textarea {
+  resize: none;
+  box-sizing: border-box;
+  overflow: hidden;
+	padding: 5px;
+}
+
+.test {
+  height: 100%;
+  text-align: center;
+  margin-bottom: 1000px;
+}
+
+#head {
+  margin-top: 100px;
+  height: 90vh;
+  height: calc(var(--vh, 1vh) * 100);
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+}
+
+.ability-branch {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ability-branch .q-select {
+  width: 100%;
+}
+
+.ability-branch li div {
+  display: inline-block;
+}
+
+.ability-branch .q-response-select {
+  text-align: left;
+}
+
+.ability-branch .input-select-choice {
+  width: 89%;
+  vertical-align: middle;
+}
+
+.ability-branch .level {
+  margin-bottom: 10px;
+  vertical-align: middle;
+  margin-right: 10px;
+  display: none;
+}
+
+.ability-branch.first .level {
+  display: inline-block;
+}
+
+.ability-branches > .title {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ability-branches > .title {
+  font-size: 1.3em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ability-branches {
+  margin-bottom: 30px;
+}
+
+.form-button {
+  background-color: black;
+  border: solid 2px black;
+  border-radius: 2px;
+  color: white;
+  padding: 5px 20px;
+}
+
+.spacer {
+    padding-top: 8rem;
+}
+
+.spacer-s {
+    padding-top: 3rem;
+}
+
+.u-link {
+  position: relative;
+  font-weight: 700;
+  font-size: 1.2em;
+}
+
+.u-link:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: black;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.history {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.social-media .icon {
+  margin-right: 30px;
+  width: 40px;
+}

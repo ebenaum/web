@@ -8,9 +8,9 @@ BUILD_IMAGES=$(foreach file,$(notdir $(SRC_IMAGES)),$(BUILD_PUBLIC_IMG_DIR)/$(fi
 
 .PHONY: dev static clean
 
-SUBPROJECTS = data@data base@. landing@. admin@pc-orga rulebook@. fonts@fonts
+SUBPROJECTS = data@data base@. landing@. admin@pc-orga rulebook@. fonts@fonts nextjs@.
 ifdef SUBPROJECT
-BUILD_SUBPROJECTS = $(filter $(SUBPROJECT)@%,$(SUBPROJECTS))
+BUILD_SUBPROJECTS = data $(filter $(SUBPROJECT)@%,$(SUBPROJECTS))
 else
 BUILD_SUBPROJECTS = $(SUBPROJECTS)
 endif
