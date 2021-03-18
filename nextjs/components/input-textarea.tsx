@@ -30,8 +30,8 @@ export class InputTextAreaConfig extends FormBuilderBaseConfig {
     />;
   }
 
-  value = () :string => {
-    return this._value.text;
+  value = () :InputTextValue => {
+    return this._value;
   }
 
   validValue = () :boolean => {
@@ -67,14 +67,14 @@ export class InputTextArea extends React.Component<InputTextAreaProps, InputText
 
   _handleKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
-      this.props.onEnter();
-      e.currentTarget.blur();
       e.preventDefault()
     }
   }
 
   _handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
+      this.props.onEnter();
+      e.currentTarget.blur();
       e.preventDefault()
     }
   }
