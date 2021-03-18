@@ -11,6 +11,7 @@ export class FormBuilderBaseConfig {
 export interface FormBuilderElement extends FormBuilderBaseConfig {
   build(c: InputConfig) :JSX.Element;
   value() :any;
+  validValue() :boolean;
 }
 
 export type NextConfigCallback = (nextConfig: FormBuilderElement) => void;

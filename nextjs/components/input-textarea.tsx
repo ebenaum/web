@@ -33,6 +33,10 @@ export class InputTextAreaConfig extends FormBuilderBaseConfig {
   value = () :string => {
     return this._value.text;
   }
+
+  validValue = () :boolean => {
+    return this._value.text !== "";
+  }
 }
 
 interface InputTextAreaProps extends InputLabelProps {

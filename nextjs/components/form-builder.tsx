@@ -35,8 +35,8 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
     }
   }
 
-  mustShowButton = (index: number) :boolean => {
-    if (index !== this.props.index) {
+  mustShowButton = (index: number, valid: boolean) :boolean => {
+    if (index !== this.props.index || !valid ) {
       return false;
     }
 
@@ -79,7 +79,7 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
                 onFocus={this.focusInput.bind(this, index)}
                 isFocus={index === this.props.index}
                 element={this.buildInput(formElement, index)}
-                showButton={this.mustShowButton(index)}
+                showButton={this.mustShowButton(index, formElement.validValue())}
               />
             );
           })

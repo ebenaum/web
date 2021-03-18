@@ -86,6 +86,10 @@ export class InputSelectConfig extends FormBuilderBaseConfig {
   value = () :InputSelectValue => {
     return this._value;
   }
+
+  validValue = () :boolean => {
+    return (!this._options.multi && (this._value.indexes.length === 1)) || (this._options.multi && (this._value.indexes.length > 0));
+  }
 }
 
 interface InputSelectProps extends InputLabelProps {

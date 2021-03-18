@@ -185,6 +185,11 @@ export class InputTraitsConfig extends FormBuilderBaseConfig {
   value = () :InputTraitsValue => {
     return new InputTraitsValue(this._value, this._points);
   }
+
+  // TODO
+  validValue = () :boolean => {
+    return true;
+  }
 }
 
 interface InputTraitsProps extends InputLabelProps {

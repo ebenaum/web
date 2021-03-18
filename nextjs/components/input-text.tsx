@@ -32,6 +32,10 @@ export class InputTextConfig extends FormBuilderBaseConfig {
   value = () :InputTextValue => {
     return this._value;
   }
+
+  validValue = () :boolean => {
+    return this._value.text !== "";
+  }
 }
 
 export class InputTextValue {
