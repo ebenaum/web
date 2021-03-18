@@ -3,7 +3,6 @@ backend:
   repo: ebenaum/cosmos
 
 media_folder: uploads
-publish_mode: editorial_workflow
 
 collections:
   - name: 'website-content'
