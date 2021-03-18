@@ -108,7 +108,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       new InputTextAreaConfig('comment', "Qu'est ce que la raie bouclée ?", this.state.comment),
       new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
       new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.props.races), { alignment: 'vertical', multi: false }),
-      new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: false }),
+      new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: true }),
     ]; 
   }
 

@@ -35,7 +35,7 @@ export class InputSelectValue {
     if (this.indexes.length == 0) {
       return 'none';
     } else {
-      return this.refs[0];
+      return this.refs.join(',');
     }
   }
 }
