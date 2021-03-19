@@ -27,18 +27,6 @@ collections:
       - {label: "Position", name: "position", widget: "number", setp: 1, value_type: 'int'}
       - {label: "TLDR", name: "tldr", widget: "string", required: false}
       - {label: "Contenu", name: "body", widget: "markdown"}
-  - name: 'world'
-    label: 'World'
-    extension: 'json'
-    folder: 'content/world'
-    create: true
-    slug: "{{type}}.{{ref}}"
-    summary: "{{type}} - {{name}}"
-    fields:
-      - {label: "Référence", name: "ref", widget: "string"}
-      - {label: "Type", name: "type", widget: "string"}
-      - {label: "Name", name: "name", widget: "string"}
-      - {label: "Description", name: "description", widget: "text"}
   - label: 'Documents'
     name: 'documents'
     delete: false
@@ -58,6 +46,55 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Date", name: "date", widget: "datetime", format: 'YYYY-MM-DDTHH:mm:ssZ'}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: 'world-factions'
+    label: 'Monde | Factions'
+    extension: 'json'
+    folder: 'content/world'
+    slug: "{{type}}.{{ref}}"
+    create: true
+    filter: {field: "type", value: "faction"}
+    fields:
+      - {label: "Référence", name: "ref", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "faction"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+  - name: 'world-races'
+    label: 'Monde | Races'
+    extension: 'json'
+    folder: 'content/world'
+    slug: "{{type}}.{{ref}}"
+    create: true
+    filter: {field: "type", value: "race"}
+    fields:
+      - {label: "Référence", name: "ref", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "race"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Faction(s)", multiple: true, name: "include", widget: "relation", collection: "factions", search_fields: ["name", "ref"], value_field: "ref", display_fields: ["{{name}} ({{ref}})"]}
+  - name: 'world-classes'
+    label: 'Monde | Voies de Vie'
+    extension: 'json'
+    folder: 'content/world'
+    slug: "{{type}}.{{ref}}"
+    create: true
+    filter: {field: "type", value: "character-class"}
+    fields:
+      - {label: "Référence", name: "ref", widget: "string"}
+      - {label: "Type", name: "type", widget: "hidden", default: "character-class"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
+  - name: 'world-raw'
+    label: 'Monde | Données brutes'
+    extension: 'json'
+    folder: 'content/world'
+    create: true
+    slug: "{{type}}.{{ref}}"
+    summary: "{{type}} - {{name}}"
+    fields:
+      - {label: "Référence", name: "ref", widget: "string"}
+      - {label: "Type", name: "type", widget: "string"}
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Description", name: "description", widget: "text"}
 #  - label: 'Fiches Joueurs'
 #    name: 'fiches-joueurs'
 #    folder: 'content/secret/fiches-joueurs'
