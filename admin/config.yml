@@ -108,7 +108,7 @@ collections:
       - {label: "Type", name: "type", widget: "hidden", default: "characteristic"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Niveaux", name: "levels", widget: "list", allow_add: false, fields: [{ label: 'Title', name: 'title', widget: 'string'},{ label: 'Description', name: 'description', widget: 'text'}]}
+      - {label: "Niveaux", name: "levels", min: 7, max: 7, widget: "list", allow_add: false, fields: [{ label: 'Title', name: 'title', widget: 'string'},{ label: 'Description', name: 'description', widget: 'text'}]}
 
 #  - label: 'Fiches Joueurs'
 #    name: 'fiches-joueurs'
