@@ -100,7 +100,6 @@ collections:
     extension: 'json'
     folder: 'content/world'
     slug: "{{type}}.{{ref}}"
-    create: true
     filter: {field: "type", value: "characteristic"}
     fields:
       - {label: "Référence", name: "ref", widget: "string"}
