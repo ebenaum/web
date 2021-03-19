@@ -70,7 +70,7 @@ collections:
       - {label: "Type", name: "type", widget: "hidden", default: "race"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Faction(s)", multiple: true, name: "include", widget: "relation", collection: "factions", search_fields: ["name", "ref"], value_field: "ref", display_fields: ["{{name}} ({{ref}})"]}
+      - {label: "Faction(s)", multiple: true, name: "include", widget: "relation", collection: "world-factions", search_fields: ["name", "ref"], value_field: "ref", display_fields: ["{{name}} ({{ref}})"]}
   - name: 'world-classes'
     label: 'Monde | Voies de Vie'
     extension: 'json'
