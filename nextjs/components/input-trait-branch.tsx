@@ -29,9 +29,9 @@ export class InputTraitBranch extends React.Component<InputTraitBranchProps, any
 
   render() {
     let width = '100%'
-    if (document.documentElement.clientWidth >= 800) {
-      width = 100 / this.props.branches.length + '%';
-    }
+    //if (document.documentElement.clientWidth >= 800) {
+    //  width = 100 / this.props.branches.length + '%';
+    //}
 
     return (
       <React.Fragment>

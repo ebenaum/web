@@ -1,12 +1,11 @@
 import * as React from 'react';
 
-import { Traits } from './input-traits';
 import { FormBuilder } from './form-builder';
 import { BuildInputSelectValue, InputSelectValue, InputSelectConfig, WorldObjectsToChoices } from './input-select';
+import { emptyTraits, InputTraitsValue, InputTraits, InputTraitsConfig, Traits } from './input-traits';
 import { InputTextValue, InputTextConfig } from './input-text';
 import { InputTextAreaConfig } from './input-textarea';
 import { FormBuilderElement } from './form-builder-base-config';
-import { InputTraitsValue } from './input-traits';
 
 interface CharacterFormProps {
   traitsPoints: number;
@@ -25,19 +24,6 @@ interface CharacterFormState {
   faction: InputSelectValue;
   classe: InputSelectValue;
 };
-
-function emptyTraits() :Traits {
-  return {
-    gear: 0,
-    dexterity: 0,
-    endurance: 0,
-    force: 0,
-    discipline: 0,
-    knowledge: 0,
-    charisma: 0,
-    will: 0,
-  }
-}
 
 /*
 function addTraits(t1: Traits, t2: Traits) :Traits {
@@ -98,6 +84,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       comment: this.state.comment.text,
       faction: this.state.faction.getValue(),
       classe: this.state.classe.getValue(),
+      traits: this.state.traits.traits,
       name: this.state.name.text,
     };
   }
@@ -109,6 +96,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
       new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.props.races), { alignment: 'vertical', multi: false }),
       new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: true }),
+      new InputTraitsConfig('traits', 'CARAC ?', this.state.traits.points, this.state.traits.traits, emptyTraits()),
     ]; 
   }
 
