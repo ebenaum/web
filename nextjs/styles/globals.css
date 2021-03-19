@@ -43,10 +43,6 @@ body {
   font-size: 1.2em;
 }
 
-#root {
-  height: 100%;
-}
-
 ul {
   list-style-type: none;
 }
@@ -64,15 +60,6 @@ a:focus {
   color: inherit;
 }
 
-.navbar-nav {
-  margin-left: 200px;
-  font-weight: 700;
-}
-
-.nav-item {
-  margin-right: 20px;
-}
-
 input[type=text], textarea {
   border: none;
   box-shadow: none !important;
@@ -87,9 +74,6 @@ input[type=text], textarea {
   resize: none;
 }
 
-.q-response-text {
-}
-
 input.q-response-text {
   margin-bottom: 10px;
 }
@@ -100,14 +84,12 @@ input.q-response-text {
 }
 
 .q-select {
-  display: table;
   margin-bottom: 10px;
   border-collapse: separate;
   border-spacing: 5px;
 }
 
 .q-select ul {
-  display: table-cell;
   vertical-align: top;
 }
 
@@ -200,34 +182,11 @@ input.q-response-text {
   fill: white;
 }
 
-.block {
-  opacity: 0.4;
-  margin-bottom: 100px;
-}
-
-.block.active {
-  opacity: 1;
-}
-
-.block button {
-  display: block;
-}
-
-.block .element {
-  display: inline-block;
-}
-
 textarea {
   resize: none;
   box-sizing: border-box;
   overflow: hidden;
 	padding: 5px;
-}
-
-.test {
-  height: 100%;
-  text-align: center;
-  margin-bottom: 1000px;
 }
 
 #head {
@@ -239,69 +198,12 @@ textarea {
   text-align: center;
 }
 
-.ability-branch {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.ability-branch .q-select {
-  width: 100%;
-}
-
-.ability-branch li div {
-  display: inline-block;
-}
-
-.ability-branch .q-response-select {
-  text-align: left;
-}
-
-.ability-branch .input-select-choice {
-  width: 89%;
-  vertical-align: middle;
-}
-
-.ability-branch .level {
-  margin-bottom: 10px;
-  vertical-align: middle;
-  margin-right: 10px;
-  display: none;
-}
-
-.ability-branch.first .level {
-  display: inline-block;
-}
-
-.ability-branches > .title {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.ability-branches > .title {
-  font-size: 1.3em;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.ability-branches {
-  margin-bottom: 30px;
-}
-
 .form-button {
   background-color: black;
   border: solid 2px black;
   border-radius: 2px;
   color: white;
   padding: 5px 20px;
-}
-
-.spacer {
-    padding-top: 8rem;
-}
-
-.spacer-s {
-    padding-top: 3rem;
 }
 
 .u-link {

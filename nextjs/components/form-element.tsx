@@ -45,8 +45,8 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
 
     return (
       <React.Fragment>
-      <div ref={this.state.ref} className={classnames('block', { active: this.props.isFocus })} onClick={this.props.onFocus}>
-        <div className='element'>
+      <div ref={this.state.ref} className={classnames('row', 'text-center', { active: this.props.isFocus })} onClick={this.props.onFocus}>
+        <div className='col-12'>
           {this.props.element}
           {button}
         </div>

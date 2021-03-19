@@ -39,7 +39,7 @@ export default function Home(props) {
       <Head>
         <link href="https://fonts.googleapis.com/css?family=Spectral:400,500" rel="stylesheet" />
       </Head>
-      <main className={styles.main}>
+      <main className='container'>
         <CharacterForm traitsPoints={7} {...props} />
       </main>
     </div>

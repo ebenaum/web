@@ -69,10 +69,10 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
   render() {
     return (
       <React.Fragment>
-      <div className='test'>
         {
           this.props.formElements.map((formElement, index) => {
             return (
+              <React.Fragment>
               <FormElement
                 key={index}
                 onOk={this.onOk}
@@ -81,10 +81,11 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
                 element={this.buildInput(formElement, index)}
                 showButton={this.mustShowButton(index, formElement.validValue())}
               />
+              <div className='mb-5'></div>
+              </React.Fragment>
             );
           })
         }
-      </div>
       </React.Fragment>
     );
   }

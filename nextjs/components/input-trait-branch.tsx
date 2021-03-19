@@ -28,22 +28,18 @@ export class InputTraitBranch extends React.Component<InputTraitBranchProps, any
   }
 
   render() {
-    let width = '100%'
-    //if (document.documentElement.clientWidth >= 800) {
-    //  width = 100 / this.props.branches.length + '%';
-    //}
+    const numberOfColumns = 12 / this.props.branches.length;
 
     return (
       <React.Fragment>
-      <div className='ability-branches'>
+      <div className='row'>
         <div className='title'>{this.props.name}</div>
         {
           this.props.branches.map((branch, index) => {
           return (
               <div
                 key={branch.key}
-                className={classnames('ability-branch full', { first: index === 0 })}
-                style={{width: width}}
+                className={classnames(`col-12 col-md-${numberOfColumns}`, { first: index === 0 })}
               >
                 <div className='title'>{branch.title}</div>
                 <InputTrait
