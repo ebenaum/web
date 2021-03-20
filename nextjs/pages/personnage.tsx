@@ -28,8 +28,11 @@ export async function getStaticProps(context) {
     }
   }
 
+  const characteristicsContent = await fs.readFile(`${process.env['DATA_DIR']}/characteristics.json`, 'utf8')
+  const characteristics = JSON.parse(characteristicsContent);
+
   return {
-    props: { races, factions, characterClasses }
+    props: { races, factions, characterClasses, characteristics }
   }
 }
 

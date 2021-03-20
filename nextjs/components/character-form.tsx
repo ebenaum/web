@@ -13,6 +13,7 @@ interface CharacterFormProps {
   races: any;
   factions: any;
   characterClasses: any;
+  characteristics: any;
 };
 
 interface CharacterFormState {
@@ -46,7 +47,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
 
     this.state = {
       index: 0,
-      traits: new InputTraitsValue(emptyTraits(), this.props.traitsPoints),
+      traits: new InputTraitsValue(emptyTraits(this.props.characteristics), this.props.traitsPoints),
       name: new InputTextValue(""), 
       comment: new InputTextValue(""), 
       race: BuildInputSelectValue([], WorldObjectsToChoices(props.races)),
@@ -69,7 +70,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
   }
 
   computeTraitsBonus = () :Traits => {
-    const traits = emptyTraits();
+    const traits = emptyTraits(this.props.characteristics);
 
     return traits;
   }
@@ -96,7 +97,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
       new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.props.races), { alignment: 'vertical', multi: false }),
       new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: true }),
-      new InputTraitsConfig('traits', 'CARAC ?', this.state.traits.points, this.state.traits.traits, emptyTraits()),
+      new InputTraitsConfig('traits', 'CARAC ?', this.props.characteristics, this.state.traits.points, this.state.traits.traits, emptyTraits(this.props.characteristics)),
     ]; 
   }
 

@@ -4,8 +4,8 @@ import * as React from 'react';
 import { InputTrait, Level } from './input-trait';
 
 export interface InputTraitBranchValue {
-  title: string;
-  key: string;
+  name: string;
+  ref: string;
   levels: Level[];
   selected: number;
   bonus: number;
@@ -28,7 +28,7 @@ export class InputTraitBranch extends React.Component<InputTraitBranchProps, any
   }
 
   render() {
-    const numberOfColumns = 12 / this.props.branches.length;
+    const numberOfColumns = ((12 / this.props.branches.length) >= 4) ? 12 / this.props.branches.length : 4;
 
     return (
       <React.Fragment>
@@ -38,15 +38,15 @@ export class InputTraitBranch extends React.Component<InputTraitBranchProps, any
           this.props.branches.map((branch, index) => {
           return (
               <div
-                key={branch.key}
+                key={branch.ref}
                 className={classnames(`col-12 col-md-${numberOfColumns}`, { first: index === 0 })}
               >
-                <div className='title'>{branch.title}</div>
+                <div className='title'>{branch.name}</div>
                 <InputTrait
                   levels={branch.levels}
                   selected={branch.selected}
                   bonus={branch.bonus}
-                  onChoice={this.onChoice.bind(this, branch.key)}
+                  onChoice={this.onChoice.bind(this, branch.ref)}
                   points={this.props.points}
                 />
               </div>

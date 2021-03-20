@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Checkmark } from './checkmark';
 
 export interface Level {
-  name: string;
+  title: string;
   description?: string
 };
 
@@ -82,7 +82,7 @@ export class InputTrait extends React.Component<InputTraitProps, any> {
             className={classnames('input-select-choice', { selected: selected === index, active: isActive, disabled: !isActive })}
             onClick={this.onClick.bind(this, index)}
           >
-            <div>{level.name} {checkmark}</div>
+            <div>{level.title} {checkmark}</div>
             <p className={classnames('description', { hidden: level.description === undefined } )}>
               {level.description}
             </p>
