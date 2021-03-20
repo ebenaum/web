@@ -188,6 +188,7 @@ textarea {
   border-radius: 2px;
   color: white;
   padding: 5px 20px;
+  margin-right: 5px;
 }
 
 .u-link {
@@ -219,7 +220,7 @@ textarea {
 
 .form-element {
   opacity: 0;
-  transition: opacity 1s ease-out;
+  transition: opacity 1.5s ease-out;
   height: 0;
   overflow: hidden;
 }

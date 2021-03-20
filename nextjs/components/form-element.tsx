@@ -62,8 +62,8 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
         <div className='col-12'>
           {this.props.element}
           <div>
-            {button}
             {backButton}
+            {button}
           </div>
         </div>
         <div className='mb-5'></div>
