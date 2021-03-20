@@ -216,3 +216,15 @@ textarea {
   margin-right: 30px;
   width: 40px;
 }
+
+.form-element {
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  height: 0;
+  overflow: hidden;
+}
+
+.form-element.active {
+  opacity: 1;
+  height: auto;
+}

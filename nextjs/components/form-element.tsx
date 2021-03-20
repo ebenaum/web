@@ -45,11 +45,12 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
 
     return (
       <React.Fragment>
-      <div ref={this.state.ref} className={classnames('row', 'text-center', { active: this.props.isFocus })} onClick={this.props.onFocus}>
+      <div ref={this.state.ref} className={classnames('row', 'form-element', 'text-center', { active: this.props.isFocus })} onClick={this.props.onFocus}>
         <div className='col-12'>
           {this.props.element}
           {button}
         </div>
+        <div className='mb-5'></div>
       </div>
       </React.Fragment>
     );

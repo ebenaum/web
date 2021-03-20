@@ -81,7 +81,6 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
                 element={this.buildInput(formElement, index)}
                 showButton={this.mustShowButton(index, formElement.validValue())}
               />
-              <div className='mb-5'></div>
               </React.Fragment>
             );
           })
