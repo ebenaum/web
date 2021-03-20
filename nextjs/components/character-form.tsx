@@ -6,6 +6,7 @@ import { emptyTraits, InputTraitsValue, InputTraits, InputTraitsConfig, Traits }
 import { InputTextValue, InputTextConfig } from './input-text';
 import { InputTextAreaConfig } from './input-textarea';
 import { FormBuilderElement } from './form-builder-base-config';
+import { CharacterFormIntroConfig } from './character-form-intro';
 
 interface CharacterFormProps {
   traitsPoints: number;
@@ -92,6 +93,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
 
   buildForm = () :FormBuilderElement[] => {
     return [
+      new CharacterFormIntroConfig(),
       new InputTextConfig('name', 'TON NOM ?', this.state.name),
       new InputTextAreaConfig('comment', "Qu'est ce que la raie bouclée ?", this.state.comment),
       new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
