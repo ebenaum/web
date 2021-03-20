@@ -104,26 +104,9 @@ input.q-response-text {
 .q-response-select .input-select-choice {
   position: relative;
   border: solid 4px black;
-  padding: 10px 0px 10px 10px;
+  padding: 10px 50px 10px 10px;
   margin-bottom: 10px;
   text-align: left;
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 50px;
-}
-
-.q-response-select .input-select-choice.horizontal {
-  max-width: 400px;
-  vertical-align: top;
-  margin-right: 15px;
-  display: inline-block;
-}
-
-.q-response-select .input-select-choice.vertical {
-  margin-bottom: 10px;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 500px;
 }
 
 .q-response-select .input-select-choice:before {
@@ -199,6 +182,7 @@ textarea {
 }
 
 .form-button {
+  display: block;
   background-color: black;
   border: solid 2px black;
   border-radius: 2px;

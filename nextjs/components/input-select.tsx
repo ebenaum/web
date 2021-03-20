@@ -146,15 +146,32 @@ export class InputSelect extends React.Component<InputSelectProps, any> {
       if (choice.description !== undefined) {
         description = this.formatDescription(choice.description);
       }
+
+      let colClass: string = 'offset-1 col-10';
+
+      let nbOfColumns = 10;
+      if (this.props.alignment === 'horizontal') {
+        nbOfColumns = 12 / this.props.choices.length;
+        if (nbOfColumns < 3) {
+          nbOfColumns = 3;
+        }
+
+        colClass = `offset-1 col-10 offset-md-0 col-md-${nbOfColumns}`;
+      }
+
       return (
+        <div className={colClass}>
+        <div className='ml-1'></div>
         <li 
           key={index}
-          className={classnames('input-select-choice', this.props.alignment, { selected: this.props.selected.indexOf(index) !== -1, active: true })}
+          className={classnames('input-select-choice', { selected: this.props.selected.indexOf(index) !== -1, active: true })}
           onClick={this.onClick.bind(this, index)}
         >
-        <div>{index + 1}. {choice.value} {checkmark}</div>
-        { description }
-      </li>
+          <div>{index + 1}. {choice.value} {checkmark}</div>
+          { description }
+        </li>
+        <div className='mr-1'></div>
+        </div>
       );
     });
 
@@ -162,7 +179,7 @@ export class InputSelect extends React.Component<InputSelectProps, any> {
       <React.Fragment>
         <InputLabel {...this.props} />
         <div className='q-select'>
-          <ul className='q-response-select'>
+          <ul className='q-response-select row'>
             {choices}
           </ul>
         </div>
