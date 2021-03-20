@@ -52,6 +52,15 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
     }
   }
 
+  onBack = () => {
+    const index = this.props.index - 1;
+    this.props.onFormSelect(index);
+
+    if (index === this.props.formElements.length) {
+      this.props.onDone();
+    }
+  }
+
   buildInput = (config: FormBuilderElement, index: number) :JSX.Element => {
     return (
       <React.Fragment>{config.build({
@@ -76,10 +85,12 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
               <FormElement
                 key={index}
                 onOk={this.onOk}
+                onBack={this.onBack}
                 onFocus={this.focusInput.bind(this, index)}
                 isFocus={index === this.props.index}
                 element={this.buildInput(formElement, index)}
                 showButton={this.mustShowButton(index, formElement.validValue())}
+                showBackButton={index > 0}
               />
               </React.Fragment>
             );

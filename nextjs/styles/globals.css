@@ -182,7 +182,7 @@ textarea {
 }
 
 .form-button {
-  display: block;
+  display: inline-block;
   background-color: black;
   border: solid 2px black;
   border-radius: 2px;

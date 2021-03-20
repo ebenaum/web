@@ -4,9 +4,11 @@ import * as React from 'react';
 interface FormElementProps {
   element: JSX.Element
   onOk() :void;
+  onBack() :void;
   isFocus?: boolean;
   onFocus() :void;
   showButton: boolean;
+  showBackButton: boolean;
 }
 
 interface FormElementState {
@@ -28,6 +30,12 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
     e.stopPropagation();
   }
 
+  onBack = (e: React.MouseEvent<HTMLButtonElement>) => {
+    this.props.onBack();
+
+    e.stopPropagation();
+  }
+
   componentDidUpdate(prevProps: FormElementProps, prevState: FormElementState) {
     if (!prevProps.isFocus && this.props.isFocus) {
       if (this.state.ref.current !== null) {
@@ -42,13 +50,21 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
     if (this.props.isFocus && this.props.showButton) {
       button = <button type='button' className='form-button' onClick={this.onOk}>Ok</button>;
     }
+    
+    let backButton = null;
+    if (this.props.isFocus && this.props.showBackButton) {
+      backButton = <button type='button' className='form-button' onClick={this.onBack}>Retour</button>;
+    }
 
     return (
       <React.Fragment>
       <div ref={this.state.ref} className={classnames('row', 'form-element', 'text-center', { active: this.props.isFocus })} onClick={this.props.onFocus}>
         <div className='col-12'>
           {this.props.element}
-          {button}
+          <div>
+            {button}
+            {backButton}
+          </div>
         </div>
         <div className='mb-5'></div>
       </div>
