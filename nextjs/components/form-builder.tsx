@@ -35,12 +35,16 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
     }
   }
 
-  mustShowButton = (index: number, valid: boolean) :boolean => {
+  buttonText = (index: number, valid: boolean) :string => {
     if (index !== this.props.index || !valid ) {
-      return false;
+      return '';
     }
 
-    return true;
+    if (index === 0) {
+      return 'Commencer';
+    }
+
+    return 'Ok';
   }
 
   onOk = () => {
@@ -72,6 +76,14 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
       </React.Fragment>);
   }
 
+  backButtonText = (index: number) :string => {
+    if (index === 0) {
+      return '';
+    }
+
+    return 'Retour';
+  }
+
   onStart = () => {
   }
 
@@ -89,8 +101,8 @@ export class FormBuilder extends React.Component<FormBuilderProps, any> {
                 onFocus={this.focusInput.bind(this, index)}
                 isFocus={index === this.props.index}
                 element={this.buildInput(formElement, index)}
-                showButton={this.mustShowButton(index, formElement.validValue())}
-                showBackButton={index > 0}
+                buttonText={this.buttonText(index, formElement.validValue())}
+                backButtonText={this.backButtonText(index)}
               />
               </React.Fragment>
             );

@@ -7,8 +7,8 @@ interface FormElementProps {
   onBack() :void;
   isFocus?: boolean;
   onFocus() :void;
-  showButton: boolean;
-  showBackButton: boolean;
+  buttonText: string;
+  backButtonText: string;
 }
 
 interface FormElementState {
@@ -47,13 +47,13 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
 
   render() {
     let button = null;
-    if (this.props.isFocus && this.props.showButton) {
-      button = <button type='button' className='form-button' onClick={this.onOk}>Ok</button>;
+    if (this.props.isFocus && this.props.buttonText !== '') {
+      button = <button type='button' className='form-button' onClick={this.onOk}>{this.props.buttonText}</button>;
     }
     
     let backButton = null;
-    if (this.props.isFocus && this.props.showBackButton) {
-      backButton = <button type='button' className='form-button' onClick={this.onBack}>Retour</button>;
+    if (this.props.isFocus && this.props.backButtonText !== '') {
+      backButton = <button type='button' className='form-button' onClick={this.onBack}>{this.props.backButtonText}</button>;
     }
 
     return (
@@ -61,6 +61,7 @@ export class FormElement extends React.Component<FormElementProps, FormElementSt
       <div ref={this.state.ref} className={classnames('row', 'form-element', 'text-center', { active: this.props.isFocus })} onClick={this.props.onFocus}>
         <div className='col-12'>
           {this.props.element}
+          <div className='mb-5'></div>
           <div>
             {backButton}
             {button}

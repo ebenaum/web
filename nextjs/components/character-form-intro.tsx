@@ -35,8 +35,9 @@ export class CharacterFormIntro extends React.Component<CharacterFormIntroProps,
     return (
       <React.Fragment>
         <div className='character-form-horizontal'>
-          <div className="row section-title"><h2>Erenthyrm 2021</h2></div>
-          <div className="row section-subtitle"><h3>Création personnage</h3></div>
+          <div className="row"><h2>Erenthyrm 2021</h2></div>
+          <div className="row"><h3>-</h3></div>
+          <div className="row mb-5"><h4>Création personnage</h4></div>
         </div>
       </React.Fragment>
     );
