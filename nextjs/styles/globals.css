@@ -230,8 +230,15 @@ textarea {
   height: auto;
 }
 
+.character-form-horizontal {
+  padding-top: 20vh;
+}
+
+.character-form-vertical {
+  padding-top: 5vh;
+}
+
 #character-form {
-  padding-top: 25vh;
   height: 100vh;
   overflow: scroll;
   -ms-overflow-style: none;  /* IE and Edge */

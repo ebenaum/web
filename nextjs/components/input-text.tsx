@@ -94,6 +94,7 @@ export class InputText extends React.Component<InputTextProps, InputTextState> {
   render() {
     return (
       <React.Fragment>
+        <div className='character-form-horizontal'>
         <InputLabel {...this.props} />
         <input
           id={this.props.name}
@@ -106,6 +107,7 @@ export class InputText extends React.Component<InputTextProps, InputTextState> {
           onFocus={this.props.onFocus}
           value={this.props.value.text}
         />
+        </div>
       </React.Fragment>
     );
   }

@@ -114,6 +114,7 @@ export class InputTextArea extends React.Component<InputTextAreaProps, InputText
   render() {
     return (
       <React.Fragment>
+        <div className='character-form-horizontal'>
         <InputLabel {...this.props} />
         <textarea
           id={this.props.name}
@@ -127,6 +128,7 @@ export class InputTextArea extends React.Component<InputTextAreaProps, InputText
           onFocus={this.props.onFocus}
           value={this.props.value.text}
         />
+        </div>
       </React.Fragment>
     );
   }

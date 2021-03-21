@@ -123,6 +123,7 @@ export class InputTraits extends React.Component<InputTraitsProps, any> {
     const grouped = groupCharacteristicsByBranch(this.props.characteristics);
     return (
       <React.Fragment>
+      <div className='.character-form-vertical'>
       <InputLabel {...this.props} />
       {
         Object.keys(grouped).map((branch) => {
@@ -144,7 +145,8 @@ export class InputTraits extends React.Component<InputTraitsProps, any> {
             />
           );
         })  
-      }
+        }
+      </div>
       </React.Fragment>
     );
   }
