@@ -106,6 +106,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
   render() {
     return (
       <React.Fragment>
+        <div id='character-form'>
         <FormBuilder
           index={this.state.index}
           onDone={this.onDone}
@@ -114,6 +115,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
           isStarted={false}
           onChange={this.onChange}
         />
+        </div>
       </React.Fragment>
     );
   }

@@ -229,3 +229,15 @@ textarea {
   opacity: 1;
   height: auto;
 }
+
+#character-form {
+  padding-top: 25vh;
+  height: 100vh;
+  overflow: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+#character-form::-webkit-scrollbar {
+  display: none;
+}
