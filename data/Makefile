@@ -9,7 +9,7 @@ $(BUILD_DIR)/journal-erenthyrm.json: $(COSMOS_DIR)/content/journal-erenthyrm/*.j
 	jq -s 'map({ title: .title, body: .body, date: .date }) | sort_by(.date) | reverse' $(COSMOS_DIR)/content/journal-erenthyrm/*.json > $@
 
 $(BUILD_DIR)/world.json: $(COSMOS_DIR)/content/world/*.json
-	jq -s 'map( { (.ref|tostring|ascii_downcase|gsub(" "; "-")): { ref: .ref, type: .type, name: .name, description: .description } } ) | add' $(COSMOS_DIR)/content/world/*.json > $@
+	jq -s 'map( { (.ref|tostring|ascii_downcase|gsub(" "; "-")): { ref: .ref, type: .type, name: .name, description: .description, include: .include } } ) | add' $(COSMOS_DIR)/content/world/*.json > $@
 
 $(BUILD_DIR)/characteristics.json: $(COSMOS_DIR)/content/world/characteristic.*.json
 	jq -s 'map( { (.ref|tostring|ascii_downcase|gsub(" "; "-")): { ref: .ref, type: .type, branch: .branch, name: .name, description: .description, levels: .levels } } ) | add' $(COSMOS_DIR)/content/world/characteristic.*.json > $@

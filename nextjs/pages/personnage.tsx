@@ -32,7 +32,7 @@ export async function getStaticProps(context) {
   const characteristics = JSON.parse(characteristicsContent);
 
   return {
-    props: { races, factions, characterClasses, characteristics }
+    props: { races, factions, characterClasses, characteristics, world }
   }
 }
 
