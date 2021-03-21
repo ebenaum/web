@@ -78,6 +78,7 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
 
   onFormSelect = (index: number)  :void => {
     this.setState({ index: index });
+    window.scrollTo(0,0);
   }
 
   form = () :any => {

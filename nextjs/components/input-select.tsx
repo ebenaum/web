@@ -177,7 +177,7 @@ export class InputSelect extends React.Component<InputSelectProps, any> {
 
     return (
       <React.Fragment>
-        <div className={(this.props.alignment === 'horizontal') ? 'character-form-horizontal' : 'character-form-vertical'}>
+        <div className='character-form-vertical'>
         <InputLabel {...this.props} />
         <div className='q-select'>
           <ul className='q-response-select row'>
