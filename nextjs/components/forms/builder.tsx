@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import { FormElement } from './form-element';
+import { FormElement } from './element';
 
-import { FormBuilderElement } from './form-builder-base-config'; 
+import { FormBuilderElement } from './builder-base-config'; 
 
 interface FormBuilderProps {
   formElements: FormBuilderElement[];

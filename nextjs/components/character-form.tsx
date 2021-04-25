@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import { WorldObject } from './app';
-import { FormBuilder } from './form-builder';
-import { BuildInputSelectValue, InputSelectValue, InputSelectConfig, WorldObjectsToChoices } from './input-select';
-import { emptyTraits, InputTraitsValue, InputTraits, InputTraitsConfig, Traits } from './input-traits';
-import { InputTextValue, InputTextConfig } from './input-text';
-import { InputTextAreaConfig } from './input-textarea';
-import { FormBuilderElement } from './form-builder-base-config';
+import { FormBuilder } from './forms/builder';
+import { BuildInputSelectValue, InputSelectValue, InputSelectConfig, WorldObjectsToChoices } from './forms/input-select';
+import { emptyTraits, InputTraitsValue, InputTraits, InputTraitsConfig, Traits } from './forms/input-traits';
+import { InputTextValue, InputTextConfig } from './forms/input-text';
+import { InputPersonalValue, InputPersonalConfig } from './input-personal';
+import { InputTextAreaConfig } from './forms/input-textarea';
+import { FormBuilderElement } from './forms/builder-base-config';
 import { CharacterFormIntroConfig } from './character-form-intro';
 
 interface CharacterFormProps {
@@ -21,10 +22,11 @@ interface CharacterFormProps {
 
 interface CharacterFormState {
   index: number;
-  name: InputTextValue;
+  name: InputPersonalValue;
   comment: InputTextValue;
   traits: InputTraitsValue;
   race: InputSelectValue;
+  age: InputSelectValue;
   faction: InputSelectValue;
   classe: InputSelectValue;
 };
@@ -51,9 +53,15 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
     this.state = {
       index: 0,
       traits: new InputTraitsValue(emptyTraits(this.props.characteristics), this.props.traitsPoints),
-      name: new InputTextValue(""), 
+      name: new InputPersonalValue("", "", ""), 
       comment: new InputTextValue(""), 
       race: BuildInputSelectValue([], WorldObjectsToChoices(props.races)),
+      age: BuildInputSelectValue([], [
+        {ref: "-12", value: "- de 12", description: ""},
+        {ref: "12-17", value: "12-17", description: ""},
+        {ref: "18-60", value: "18-60", description: ""},
+        {ref: "+60", value: "+ de 60", description: ""},
+      ]),
       faction: BuildInputSelectValue([], WorldObjectsToChoices(props.factions)),
       classe: BuildInputSelectValue([], WorldObjectsToChoices(props.characterClasses)),
     };
@@ -88,9 +96,11 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
       race: this.state.race.getValue(),
       comment: this.state.comment.text,
       faction: this.state.faction.getValue(),
+      age: this.state.age.getValue(),
       classe: this.state.classe.getValue(),
       traits: this.state.traits.traits,
-      name: this.state.name.text,
+      name: this.state.name.firstName.text + ' ' + this.state.name.lastName.text,
+      email: this.state.name.email.text,
     };
   }
 
@@ -113,9 +123,14 @@ export class CharacterForm extends React.Component<CharacterFormProps, Character
   buildForm = () :FormBuilderElement[] => {
     return [
       new CharacterFormIntroConfig(),
-      new InputTextConfig('name', 'TON NOM ?', this.state.name),
-      new InputTextAreaConfig('comment', "Qu'est ce que la raie bouclée ?", this.state.comment),
-      new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false }),
+      new InputPersonalConfig('name', 'TON NOM ?', this.state.name),
+      new InputSelectConfig('age', 'TON AGE', this.state.age, [
+        {ref: "-12", value: "- de 12", description: ""},
+        {ref: "12-17", value: "12-17", description: ""},
+        {ref: "18-60", value: "18-60", description: ""},
+        {ref: "+60", value: "+ de 60", description: ""},
+      ], { alignment: 'horizontal', multi: false }),
+      new InputSelectConfig('faction', 'TA FACTION ?', this.state.faction, WorldObjectsToChoices(this.props.factions), { alignment: 'horizontal', multi: false, displayListNumber: true }),
       new InputSelectConfig('race', 'TA RACE ?', this.state.race, WorldObjectsToChoices(this.races()), { alignment: 'vertical', multi: false }),
       new InputSelectConfig('classe', 'TA CLASSE ?', this.state.classe, WorldObjectsToChoices(this.props.characterClasses), { alignment: 'vertical', multi: false }),
       new InputTraitsConfig('traits', 'CARAC ?', this.props.characteristics, this.state.traits.points, this.state.traits.traits, emptyTraits(this.props.characteristics)),

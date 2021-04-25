@@ -1,19 +1,21 @@
 import * as React from 'react';
 
-import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './form-builder-base-config'; 
+import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './builder-base-config'; 
 import { InputLabelProps, InputLabel } from './input-label'; 
 
 export class InputTextConfig extends FormBuilderBaseConfig {
+  _placeholder: string;
   _value: InputTextValue;
 
-  constructor(name: string, text: string, value: InputTextValue) {
+  constructor(name: string, text: string, placeholder: string, value: InputTextValue) {
     super(name, text);
     this._value = value;
+    this._placeholder = placeholder;
   }
 
   onChangeHandler = (onNextConfig: NextConfigCallback): ((change: InputTextValue) => void) => {
     return (change: InputTextValue) :void => {
-      onNextConfig(new InputTextConfig(this.name, this.text, change));
+      onNextConfig(new InputTextConfig(this.name, this.text, this._placeholder, change));
     }
   }
 
@@ -21,6 +23,7 @@ export class InputTextConfig extends FormBuilderBaseConfig {
     return <InputText
       name={this.name}
       text={this.text}
+      placeholder={this._placeholder}
       value={this._value}
       onEnter={c.onEnter}
       onFocus={c.onFocus}
@@ -51,6 +54,7 @@ interface InputTextProps extends InputLabelProps {
   onEnter() :void;
   onFocus() :void;
   value: InputTextValue;
+  placeholder: string;
   isFocus?: boolean
 };
 
@@ -92,10 +96,15 @@ export class InputText extends React.Component<InputTextProps, InputTextState> {
   }
 
   render() {
+    let label = null;
+    if (this.props.text !== '') {
+     label = <InputLabel {...this.props} />;
+    }
+
     return (
       <React.Fragment>
-        <div className='character-form-horizontal'>
-        <InputLabel {...this.props} />
+        <div className='input-text character-form-horizontal'>
+        {label}
         <input
           id={this.props.name}
           ref={this.state.ref}
@@ -103,7 +112,7 @@ export class InputText extends React.Component<InputTextProps, InputTextState> {
           onKeyPress={this._handleKeyPress}
           className='q-response-text'
           type='text'
-          placeholder='Taper votre réponse…'
+          placeholder={this.props.placeholder}
           onFocus={this.props.onFocus}
           value={this.props.value.text}
         />

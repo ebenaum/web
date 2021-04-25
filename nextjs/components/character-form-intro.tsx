@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './form-builder-base-config'; 
+import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './forms/builder-base-config'; 
 
 export class CharacterFormIntroConfig extends FormBuilderBaseConfig {
   constructor() {

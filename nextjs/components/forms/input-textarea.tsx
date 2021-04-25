@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './form-builder-base-config'; 
+import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './builder-base-config'; 
 import { InputLabelProps, InputLabel } from './input-label'; 
 import { InputTextValue } from './input-text'; 
 

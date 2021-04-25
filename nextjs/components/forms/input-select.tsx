@@ -1,9 +1,9 @@
 import classnames from 'classnames';
 import * as React from 'react';
 
-import { WorldObject } from './app'; 
+import { WorldObject } from '../app'; 
 import { InputLabelProps, InputLabel } from './input-label'; 
-import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './form-builder-base-config'; 
+import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './builder-base-config'; 
 import { Checkmark } from './checkmark';
 
 export interface Choice {
@@ -50,6 +50,7 @@ export function BuildInputSelectValue(selected: number[], choices: Choice[]) :In
 
 interface InputSelectConfigOptions {
   alignment: 'horizontal'|'vertical';
+  displayListNumber?: boolean;
   multi: boolean;
 }
 
@@ -79,6 +80,7 @@ export class InputSelectConfig extends FormBuilderBaseConfig {
       text={this.text}
       multi={this._options.multi}
       alignment={this._options.alignment}
+      displayListNumber={this._options.displayListNumber}
       onChoice={this.onChangeHandler(c.onNextConfig)}
     />;
   }
@@ -97,6 +99,7 @@ interface InputSelectProps extends InputLabelProps {
   multi?: boolean;
   selected: number[];
   alignment: 'horizontal'|'vertical';
+  displayListNumber?: boolean;
   onChoice(change: InputSelectValue) :void;
 };
 
@@ -147,6 +150,13 @@ export class InputSelect extends React.Component<InputSelectProps, any> {
         description = this.formatDescription(choice.description);
       }
 
+      let head;
+      if (this.props.displayListNumber) {
+        head = <div>{index + 1}. {choice.value} {checkmark}</div>;
+      } else {
+        head = <div>{choice.value} {checkmark}</div>;
+      }
+
       let colClass: string = 'offset-1 col-10';
 
       let nbOfColumns = 10;
@@ -167,7 +177,7 @@ export class InputSelect extends React.Component<InputSelectProps, any> {
           className={classnames('input-select-choice', { selected: this.props.selected.indexOf(index) !== -1, active: true })}
           onClick={this.onClick.bind(this, index)}
         >
-          <div>{index + 1}. {choice.value} {checkmark}</div>
+          { head }
           { description }
         </li>
         <div className='mr-1'></div>

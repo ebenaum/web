@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { InputTraitBranch } from './input-trait-branch';
 import { InputLabelProps, InputLabel } from './input-label'; 
-import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './form-builder-base-config'; 
+import { FormBuilderBaseConfig, InputConfig, NextConfigCallback } from './builder-base-config'; 
 
 interface Characteristic {
   ref: string;

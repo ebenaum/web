@@ -76,6 +76,7 @@ input[type=text], textarea {
 
 input.q-response-text {
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .q-text {
@@ -228,14 +229,7 @@ textarea {
 .form-element.active {
   opacity: 1;
   height: auto;
-}
-
-.character-form-horizontal {
   padding-top: 20vh;
-}
-
-.character-form-vertical {
-  padding-top: 5vh;
 }
 
 #character-form {
@@ -245,4 +239,10 @@ textarea {
 
 #character-form::-webkit-scrollbar {
   display: none;
+}
+
+.input-name .input-text {
+  display: inline-block;
+  margin-right: 5px;
+  margin-left: 5px;
 }
