@@ -23,6 +23,44 @@
 
 <div class='mb-5'></div>
 <div class="container">
+  {{ with findEntry . "event-ebenaum-2021" }}
+    <div class="row section-title"><h2>{{ .title }}</h2></div>
+  <div class="row section-subtitle"><h3>à Richebourg - <u><a href='https://goo.gl/maps/Kr1RwTgJwTFx9i8c9' target='_blank'>46.6353, 1.8041</a></u></h3></div>
+  <div class='mb-5'></div>
+  <div class='row'>
+    <div class='col-12 col-md-8 text-justify'>
+      {{ .body }}
+    </div>
+  </div>
+  {{ end }}
+<div class='mb-5'></div>
+<div class="row text-left"><p>
+<a href='https://photos.google.com/share/AF1QipPUgfTttqmHHR0bQoXDav9uk7twUZ3zA4V4lZSAl9ge4Mspbh6Kz6jlKYFXUxHAIw?key=eVZwQzB3MGF0SEhYMjlWQlljMTJNdl9VWnJyaHJn' target='_blank'>Voir l'album</a> -
+Crédits photos : <a href='https://en.tipeee.com/PhotoGNik' target='_blank'>PhotoGNik</a>
+</p></div>
+<div class='mb-5'></div>
+<div class="row text-center gallery">
+  <div class='col-12 col-md-8'>
+    <div class='row'>
+      <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-9.jpg' width='100%'/></div>
+      <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-8.jpg' width='100%'/></div>
+    </div>
+    <div class='row'>
+      <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-6.jpg' width='100%'/></div>
+      <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-4.jpg' width='100%'/></div>
+    </div>
+  </div>
+  <div class='col-12 col-md-4 gallery-tile'>
+    <img src='/img/erenthyrm-1-photognik-5.jpg' width='100%'/>
+  </div>
+</div>
+<div class="row text-center gallery">
+  <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-1.jpg' width='100%'/></div>
+  <div class='col-12 col-md-6 gallery-tile'><img src='/img/erenthyrm-1-photognik-3.jpg' width='100%'/></div>
+</div>
+</div>
+<div class='mb-5'></div>
+<div class="container">
   {{ with findEntry . "event-prebenoit" }}
     <div class="row section-title"><h2>{{ .title }}</h2></div>
   <div class="row section-subtitle"><h3>à l'Abbaye de Prébenoit - <u><a href='https://goo.gl/maps/TLSnr1mhYe5YXc3Y7' target='_blank'>46.3573,2.0410</a></u></h3></div>
