@@ -24,6 +24,11 @@ body {
   font-family: 'Libre Caslon Text', 'IM Fell', serif;
 }
 
+a {
+  color: black;
+  text-decoration: underline;
+}
+
 body * {
   justify-content: center!important;
 }
@@ -40,12 +45,7 @@ li {
   list-style: none;
 }
 
-a {
-  color: black;
-}
-
 a:hover {
-  text-decoration: none;
   color: black;
 }
 
