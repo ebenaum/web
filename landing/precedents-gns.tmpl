@@ -22,6 +22,59 @@
 <div class="row section-title"><h2>Précédents Evènements</h2></div>
 
 <div class='mb-5'></div>
+
+<div class="container">
+  {{ with findEntry . "event-lice-du-lys-2025" }}
+    <div class="row section-title"><h2>{{ .title }}</h2></div>
+  <div class="row section-subtitle"><h3>au Château de Lys-Saint-Georges - <u><a href='https://maps.app.goo.gl/RswFH1LnGgGmhPm7A' target='_blank'>46.6414,1.8200</a></u></h3></div>
+  <div class='mb-5'></div>
+  <div class='row'>
+    <div class='col-12 col-md-8 text-justify'>
+      {{ .body }}
+    </div>
+  </div>
+  {{ end }}
+<div class='mb-5'></div>
+
+<div class="container">
+  {{ with findEntry . "event-ebenaum-2025" }}
+    <div class="row section-title"><h2>{{ .title }}</h2></div>
+  <div class="row section-subtitle"><h3>au Château de Celon - <u><a href='https://maps.app.goo.gl/KjnQrhz5zMdGygnH6' target='_blank'>46.5208,1.5019</a></u></h3></div>
+  <div class='mb-5'></div>
+  <div class='row'>
+    <div class='col-12 col-md-8 text-justify'>
+      {{ .body }}
+    </div>
+  </div>
+  {{ end }}
+<div class='mb-5'></div>
+
+<div class="container">
+  {{ with findEntry . "event-ebenaum-2024" }}
+    <div class="row section-title"><h2>{{ .title }}</h2></div>
+  <div class="row section-subtitle"><h3>au Château de Celon - <u><a href='https://maps.app.goo.gl/KjnQrhz5zMdGygnH6' target='_blank'>46.5208,1.5019</a></u></h3></div>
+  <div class='mb-5'></div>
+  <div class='row'>
+    <div class='col-12 col-md-8 text-justify'>
+      {{ .body }}
+    </div>
+  </div>
+  {{ end }}
+<div class='mb-5'></div>
+
+<div class="container">
+  {{ with findEntry . "event-ebenaum-2022" }}
+    <div class="row section-title"><h2>{{ .title }}</h2></div>
+  <div class="row section-subtitle"><h3>au Moulin de Baratte à Méobecq - <u><a href='https://maps.app.goo.gl/r5M1WvjPnHF2zJ4Q6' target='_blank'>46.7571,1.3932</a></u></h3></div>
+  <div class='mb-5'></div>
+  <div class='row'>
+    <div class='col-12 col-md-8 text-justify'>
+      {{ .body }}
+    </div>
+  </div>
+  {{ end }}
+<div class='mb-5'></div>
+
 <div class="container">
   {{ with findEntry . "event-ebenaum-2021" }}
     <div class="row section-title"><h2>{{ .title }}</h2></div>
